@@ -1,236 +1,178 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Hybrid Strategy Integrated Report</title>
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI 에셋 협업 — 핵심 요약</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0F17;
+    --surface:#161924;
+    --surface-2:#1E2230;
+    --line:#2A2F40;
+    --text:#ECEEF6;
+    --muted:#888FA6;
+    --gain:#34E2B0;        /* 당사 몫 */
+    --gain-deep:#11A989;
+    --studio:#3C4258;      /* 스튜디오 몫 */
+    --amber:#F5B544;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+    background:var(--bg);color:var(--text);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+    font-feature-settings:"tnum" 1;
+    padding:max(env(safe-area-inset-top),18px) 0 60px;
+  }
+  .wrap{max-width:440px;margin:0 auto;padding:0 18px}
 
-        :root {
-            --main-black: #000000;
-            --accent-red: #E60012;
-            --bg-white: #ffffff;
-            --sub-gray: #f2f2f2;
-        }
+  /* header */
+  .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gain);font-weight:700;text-transform:uppercase}
+  h1{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin:10px 0 8px}
+  .tag{font-size:13.5px;color:var(--muted)}
+  .rule{height:1px;background:var(--line);margin:22px 0}
 
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #111;
-            color: var(--main-black);
-            margin: 0;
-            padding: 20px 10px; /* 모바일 여백 축소 */
-            display: flex;
-            justify-content: center;
-        }
+  .sec-label{
+    font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;
+    text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;
+  }
+  .sec-label::before{content:"";width:18px;height:2px;background:var(--gain);display:inline-block}
 
-        .report-card {
-            width: 100%;
-            max-width: 900px;
-            background: var(--bg-white);
-            border: 4px solid var(--main-black);
-            padding: 40px 20px; /* 패딩 조정 */
-            box-sizing: border-box;
-            box-shadow: 10px 10px 0px var(--accent-red);
-        }
+  /* tier card */
+  .tier{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:16px 16px 15px;margin-bottom:12px;
+  }
+  .tier-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+  .tier-name{font-size:16px;font-weight:800}
+  .tier-ratio{font-size:13px;color:var(--muted);font-weight:600}
+  .tier-ratio b{color:var(--gain);font-size:18px;font-weight:800}
+  .tier-give{font-size:12.5px;color:var(--muted);margin-bottom:11px}
+  .tier-give b{color:#C2C7DA;font-weight:600}
+  .bar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700}
+  .b-studio{background:var(--studio);color:#C7CCDD;display:flex;align-items:center;justify-content:center}
+  .b-us{background:linear-gradient(90deg,var(--gain-deep),var(--gain));color:#04130E;display:flex;align-items:center;justify-content:center}
 
-        @media (min-width: 768px) {
-            body { padding: 40px 15px; }
-            .report-card { padding: 60px; box-shadow: 20px 20px 0px var(--accent-red); }
-        }
+  /* MG block */
+  .mg{
+    background:linear-gradient(150deg,#1A1D2B,#22202E);
+    border:1px solid #3A3320;border-radius:14px;padding:18px;margin-bottom:12px;
+  }
+  .mg-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .mg-row + .mg-row{margin-top:13px;padding-top:13px;border-top:1px solid #2E2A24}
+  .mg-k{font-size:13px;color:var(--muted)}
+  .mg-v{font-size:15px;font-weight:800;text-align:right}
+  .mg-v.amber{color:var(--amber)}
+  .mg-sub{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:2px}
 
-        header {
-            border-bottom: 8px solid var(--main-black);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+  /* note rows */
+  .note{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin-bottom:12px;
+  }
+  .note .h{font-size:13.5px;font-weight:800;margin-bottom:6px}
+  .note .b{font-size:13px;color:var(--muted);line-height:1.65}
+  .note .b b{color:#C2C7DA;font-weight:600}
 
-        @media (min-width: 768px) {
-            header { flex-direction: row; justify-content: space-between; align-items: flex-end; border-bottom-width: 12px; }
-        }
+  .key{display:flex;gap:16px;margin-top:6px;font-size:11.5px;color:var(--muted)}
+  .key span{display:inline-flex;align-items:center;gap:6px}
+  .kd{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .kd.s{background:var(--studio)}
+  .kd.u{background:var(--gain)}
 
-        .header-left h1 { font-size: 28px; font-weight: 900; margin: 0; line-height: 1.1; letter-spacing: -1px; }
-        @media (min-width: 768px) { .header-left h1 { font-size: 40px; } }
-
-        .header-left .tagline { color: var(--accent-red); font-weight: 800; font-size: 13px; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        .period-badge { background: var(--main-black); color: #fff; padding: 6px 12px; font-weight: 800; font-size: 13px; align-self: flex-start; }
-
-        .section-title { font-size: 18px; font-weight: 900; margin-bottom: 20px; border-left: 8px solid var(--accent-red); padding-left: 12px; display: flex; align-items: center; }
-        @media (min-width: 768px) { .section-title { font-size: 22px; border-left-width: 10px; } }
-
-        /* KPI & Personnel Grid - 모바일 1열 */
-        .grid-container { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 30px; }
-        @media (min-width: 600px) { .grid-container { grid-template-columns: repeat(2, 1fr); gap: 15px; } }
-
-        .grid-item { border: 2px solid var(--main-black); padding: 15px; text-align: center; }
-        .grid-item.dark { background: var(--main-black); color: #fff; }
-        .label { font-size: 10px; font-weight: 700; opacity: 0.8; margin-bottom: 8px; display: block; }
-        .value { font-size: 24px; font-weight: 900; }
-        .unit { font-size: 14px; font-weight: 700; margin-left: 4px; }
-
-        /* Chart Section - 스크롤 가능하게 대응 */
-        .chart-section { background: var(--sub-gray); padding: 25px 10px; margin-bottom: 30px; border: 1px solid #ddd; overflow-x: auto; }
-        .chart-inner { min-width: 300px; } /* 차트 최소폭 유지 */
-        
-        .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; font-size: 11px; font-weight: 800; }
-        .chart-bars { display: flex; justify-content: space-around; align-items: flex-end; height: 150px; border-bottom: 2px solid var(--main-black); padding-bottom: 5px; }
-        .bar-group { display: flex; flex-direction: column; align-items: center; width: 60px; }
-        .bars { display: flex; gap: 3px; align-items: flex-end; }
-        .bar { width: 18px; }
-        @media (min-width: 768px) { .bar { width: 22px; } .bar-group { width: 75px; } }
-        
-        .bar.market { background: #bbb; }
-        .bar.our { background: var(--accent-red); }
-        .bar-label { font-size: 10px; font-weight: 800; margin-top: 10px; text-align: center; }
-
-        /* Table - 가로 스크롤 */
-        .table-wrapper { width: 100%; overflow-x: auto; margin-bottom: 30px; }
-        table { width: 100%; border-collapse: collapse; min-width: 550px; }
-        th { background: var(--main-black); color: #fff; padding: 10px; font-size: 12px; text-align: left; }
-        td { padding: 12px; border-bottom: 1px solid #ddd; font-size: 13px; }
-        .row-accent { background: #fff4f4; font-weight: 800; }
-
-        /* Conclusion Box */
-        .conclusion-box { border: 3px solid var(--accent-red); padding: 25px 15px; background: #fff; position: relative; margin-bottom: 20px; }
-        @media (min-width: 768px) { .conclusion-box { padding: 35px; } }
-        .conclusion-box::after { content: "OPERATIONAL STRATEGY"; position: absolute; top: -11px; left: 15px; background: var(--accent-red); color: #fff; padding: 2px 10px; font-size: 10px; font-weight: 900; }
-        .conclusion-text { font-size: 14px; font-weight: 700; line-height: 1.7; margin: 0; word-break: keep-all; }
-        @media (min-width: 768px) { .conclusion-text { font-size: 16px; } }
-        .conclusion-text strong { color: var(--accent-red); text-decoration: underline; }
-
-        /* Appendix */
-        .appendix { background: #fdfdfd; border: 1px dashed var(--main-black); padding: 20px; margin-top: 40px; }
-        .appendix-title { font-size: 16px; font-weight: 900; margin-bottom: 15px; color: #555; text-decoration: underline; }
-        .calc-box { font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.6; color: #333; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
-
-        footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; text-align: right; font-size: 11px; font-weight: 700; color: #666; }
-    </style>
+  footer{margin-top:24px;text-align:center;font-size:11px;color:#5A6075}
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="report-card">
-    <header>
-        <div class="header-left">
-            <span class="tagline">Hybrid Model Value Proposition</span>
-            <h1>글로벌 제작 통합 전략<br>및 수익성 달성 시나리오</h1>
-        </div>
-        <div class="header-right">
-            <div class="period-badge">2026.02 - 2026.05</div>
-        </div>
-    </header>
+  <div class="eyebrow">AI 에셋 협업 · 핵심 요약</div>
+  <h1>웹툰 스튜디오 RS / MG 구조</h1>
+  <div class="tag">원칙 — 당사가 비용·리스크를 더 질수록 당사 RS↑ (50 → 70 → 80%)</div>
 
-    <div class="section-title">핵심 관리 지표 및 인력 구성</div>
-    <div class="grid-container">
-        <div class="grid-item">
-            <span class="label">필리핀 스튜디오 (PH)</span>
-            <span class="value">09</span><span class="unit">명</span>
-        </div>
-        <div class="grid-item dark">
-            <span class="label" style="opacity: 0.7;">국내 본사 팀 (KR)</span>
-            <span class="value">04</span><span class="unit">명</span>
-        </div>
-        <div class="grid-item">
-            <span class="label">목표 생산 효율 (KPI)</span>
-            <span class="value" style="color:var(--accent-red)">35</span><span class="unit">회/월</span>
-        </div>
-        <div class="grid-item">
-            <span class="label">최대 가동시 비용 절감액</span>
-            <span class="value" style="color:var(--accent-red)">1,697</span><span class="unit">만 원</span>
-        </div>
+  <div class="rule"></div>
+
+  <div class="sec-label">티어별 수익 배분</div>
+
+  <div class="tier">
+    <div class="tier-top">
+      <div class="tier-name">자체제작형</div>
+      <div class="tier-ratio">당사 <b>50</b>%</div>
     </div>
+    <div class="tier-give">제공: <b>NPM + 유통</b> · 스튜디오가 전 비용 부담</div>
+    <div class="bar"><div class="b-studio" style="width:50%">50%</div><div class="b-us" style="width:50%">당사 50%</div></div>
+  </div>
 
-    <div class="section-title">회차별 수익 전환 시나리오</div>
-    <div class="chart-section">
-        <div class="chart-inner">
-            <div class="legend">
-                <div style="display:flex; align-items:center;"><div style="width:10px; height:10px; background:#bbb; margin-right:6px;"></div>시장 외주비 (80만)</div>
-                <div style="display:flex; align-items:center;"><div style="width:10px; height:10px; background:var(--accent-red); margin-right:6px;"></div>자체 제작비</div>
-            </div>
-            <div class="chart-bars">
-                <div class="bar-group">
-                    <div class="bars"><div class="bar market" style="height: 80px;"></div><div class="bar our" style="height: 82px;"></div></div>
-                    <div class="bar-label">20회차</div>
-                </div>
-                <div class="bar-group" style="font-weight: 900;">
-                    <div class="bars"><div class="bar market" style="height: 85px;"></div><div class="bar our" style="height: 82px;"></div></div>
-                    <div class="bar-label" style="color:var(--accent-red)">21회 (BEP)</div>
-                </div>
-                <div class="bar-group">
-                    <div class="bars"><div class="bar market" style="height: 135px;"></div><div class="bar our" style="height: 86px;"></div></div>
-                    <div class="bar-label">35회 (KPI)</div>
-                </div>
-                <div class="bar-group">
-                    <div class="bars"><div class="bar market" style="height: 145px;"></div><div class="bar our" style="height: 88px;"></div></div>
-                    <div class="bar-label">43회 (MAX)</div>
-                </div>
-            </div>
-        </div>
-        <p style="text-align:center; font-size:10px; margin-top:15px; color:#666;">※ 시장가 80만 원 대비 월 21회차 생산 시점부터 비용 역전</p>
+  <div class="tier">
+    <div class="tier-top">
+      <div class="tier-name">하이브리드형</div>
+      <div class="tier-ratio">당사 <b>70</b>%</div>
     </div>
+    <div class="tier-give">제공: <b>+ 영상 API (월 ~100만원)</b></div>
+    <div class="bar"><div class="b-studio" style="width:30%">30%</div><div class="b-us" style="width:70%">당사 70%</div></div>
+  </div>
 
-    <div class="section-title">운영 로드맵 및 단계별 목표</div>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th width="15%">구분</th>
-                    <th width="20%">목표 생산량</th>
-                    <th width="30%">핵심 과제</th>
-                    <th width="35%">품질 및 관리 (QC)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>2월</strong></td>
-                    <td>20 ~ 25회</td>
-                    <td>인프라 동기화</td>
-                    <td style="font-size:11px;">• 한국-필리핀 워크플로우 정립<br>• 가이드라인 배포</td>
-                </tr>
-                <tr class="row-accent">
-                    <td><strong>3월</strong></td>
-                    <td><strong>35회 (KPI)</strong></td>
-                    <td><strong>수익성 극대화</strong></td>
-                    <td style="font-size:11px;">• <strong>비성인 AI 애니 안정화</strong><br>• 최종 연기/싱크 검수</td>
-                </tr>
-                <tr>
-                    <td><strong>4월~5월</strong></td>
-                    <td>43회 (MAX)</td>
-                    <td>성인 영역 확장</td>
-                    <td style="font-size:11px;">• <strong>성인 콘텐츠 순차 적용</strong><br>• 인센티브 효율 정점</td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="tier">
+    <div class="tier-top">
+      <div class="tier-name">풀지원형</div>
+      <div class="tier-ratio">당사 <b>80</b>%</div>
     </div>
+    <div class="tier-give">제공: <b>+ MG · 인프라 · 프롬프트 가이드</b> · 스튜디오는 노동력만</div>
+    <div class="bar"><div class="b-studio" style="width:20%">20%</div><div class="b-us" style="width:80%">당사 80%</div></div>
+  </div>
 
-    <div class="conclusion-box">
-        <p class="conclusion-text">
-            필리핀 스튜디오 운영을 위해 현지에서 달성해야 하는 <strong>KPI는 월간 35회차</strong>로 지정하여 실제 효율이 날 수 있도록 할 예정입니다. 생산성 최대치에 도달시켜 비성인 AI애니메이션 부분을 안정화시킨 뒤 <strong>성인 부분도 순차적으로 진행</strong> 할 예정입니다.
-        </p>
+  <div class="key">
+    <span><i class="kd s"></i> 스튜디오</span>
+    <span><i class="kd u"></i> 당사</span>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="sec-label">MG (풀지원형 한정)</div>
+  <div class="mg">
+    <div class="mg-row">
+      <div class="mg-k">보장 수준</div>
+      <div class="mg-v amber">1인 월 250만원</div>
     </div>
-
-    <div class="appendix">
-        <div class="appendix-title">[부록] 총비용 상세 산출 내역</div>
-        <div class="calc-box">
-<strong>1. 필리핀 현지 운영비 (월 고정비 약 1,023만 원)</strong>
-• 기본급(9인): 4,500,000원
-• 관리/임대/수수료 등 포함
-
-<strong>2. 국내 운영비 (월 고정비 약 1,033만 원)</strong>
-• 편집 인력(4인) 급여 합계
-
-<strong>3. 수익성 계산 공식</strong>
-- Total Opex = (PH Fixed) + (KR Fixed) + (Chapter × 50,000)
-- Cost Avoidance = (Chapter × 800,000) - Total Opex
-
-<strong>※ 월 43회 생산 시 기회이익:</strong>
-- 외주 대비 약 <strong>1,169만 ~ 1,697만 원</strong> 순이익 가치 발생
-        </div>
+    <div class="mg-row">
+      <div class="mg-k">회수 방식</div>
+      <div>
+        <div class="mg-v">스튜디오 몫(20%)에서 선차감</div>
+        <div class="mg-sub">recoupable · 미달 차액만 당사 흡수</div>
+      </div>
     </div>
-    <footer>본 문서는 내부 전략 검토용입니다.</footer>
+    <div class="mg-row">
+      <div class="mg-k">회수 손익분기</div>
+      <div>
+        <div class="mg-v">월 순매출 1,250만원<span style="color:var(--muted);font-weight:600"> (1인)</span></div>
+        <div class="mg-sub">2인 투입 시 2,500만원</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="sec-label">정산 기준 · 포지셔닝</div>
+
+  <div class="note">
+    <div class="h">RS 정산 = 순매출(net) 기준</div>
+    <div class="b">총매출 − <b>결제수수료 등 직접비만</b> 공제. 일반관리·마케팅·인건비는 비공제. 지원(API·인프라)은 <b>RS 비율에만 반영</b>, 별도 정산 없음.</div>
+  </div>
+
+  <div class="note">
+    <div class="h">풀지원형은 마진보다 물량·신규 확보용 앵커</div>
+    <div class="b">MG·API·인프라를 얹고 80%를 가져가되, MG가 낮아 회수가 빠름. 업사이드를 원하는 스튜디오는 자연히 하이브리드(70%)로 유도.</div>
+  </div>
+
+  <div class="note">
+    <div class="h">미결정 1건</div>
+    <div class="b">MG 회수 기간 — 현재 <b>정산 12개월</b> 가정. 무기한 누적 vs 기간 한정만 확정하면 완성.</div>
+  </div>
+
+  <footer>웹툰 스튜디오 AI 에셋 협업 · 대표 보고용 요약</footer>
+
 </div>
-
 </body>
 </html>
