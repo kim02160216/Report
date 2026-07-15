@@ -2,177 +2,482 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AI 에셋 협업 — 핵심 요약</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>챗플 × 크리에이터 파트너십 제안서 · C+P 융합 모델</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0D0F17;
-    --surface:#161924;
-    --surface-2:#1E2230;
-    --line:#2A2F40;
-    --text:#ECEEF6;
-    --muted:#888FA6;
-    --gain:#34E2B0;        /* 당사 몫 */
-    --gain-deep:#11A989;
-    --studio:#3C4258;      /* 스튜디오 몫 */
-    --amber:#F5B544;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
-    background:var(--bg);color:var(--text);
-    line-height:1.6;-webkit-font-smoothing:antialiased;
-    font-feature-settings:"tnum" 1;
-    padding:max(env(safe-area-inset-top),18px) 0 60px;
-  }
-  .wrap{max-width:440px;margin:0 auto;padding:0 18px}
+:root{
+  --bg:#101014;
+  --panel:#17171d;
+  --panel2:#1d1d25;
+  --line:#2a2a34;
+  --rose:#e8879c;
+  --rose-dim:rgba(232,135,156,.12);
+  --gold:#d9b98a;
+  --gold-dim:rgba(217,185,138,.10);
+  --txt:#eceae6;
+  --sub:#a7a7b2;
+  --mut:#71717d;
+  --ok:#8fd0a0;
+  --warn:#e0b46a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:'Noto Sans KR',sans-serif;
+  font-weight:400;
+  line-height:1.75;
+  letter-spacing:-0.01em;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 28px}
+.mono{font-family:'IBM Plex Mono',monospace}
+.serif{font-family:'Noto Serif KR',serif}
 
-  /* header */
-  .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gain);font-weight:700;text-transform:uppercase}
-  h1{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin:10px 0 8px}
-  .tag{font-size:13.5px;color:var(--muted)}
-  .rule{height:1px;background:var(--line);margin:22px 0}
+/* ── hero ── */
+.hero{padding:88px 0 64px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;top:-160px;right:-120px;width:480px;height:480px;
+  background:radial-gradient(circle,rgba(232,135,156,.09) 0%,transparent 65%);
+  pointer-events:none;
+}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.tag{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+  padding:5px 12px;border:1px solid var(--line);border-radius:2px;color:var(--sub);
+}
+.tag.hot{border-color:rgba(232,135,156,.45);color:var(--rose)}
+h1{
+  font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(30px,4.6vw,44px);
+  line-height:1.3;letter-spacing:-0.02em;margin-bottom:20px;
+}
+h1 em{font-style:normal;color:var(--rose)}
+.lede{font-size:16.5px;color:var(--sub);max-width:640px;font-weight:300}
+.lede b{color:var(--txt);font-weight:500}
 
-  .sec-label{
-    font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;
-    text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;
-  }
-  .sec-label::before{content:"";width:18px;height:2px;background:var(--gain);display:inline-block}
+/* ── termsheet strip ── */
+.strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:48px;border-radius:4px;overflow:hidden;
+}
+.strip .cell{background:var(--panel);padding:20px 18px}
+.cell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--mut);margin-bottom:8px}
+.cell .v{font-family:'IBM Plex Mono',monospace;font-size:21px;font-weight:600;color:var(--txt);line-height:1.25}
+.cell .v span{font-size:12px;color:var(--sub);font-weight:400}
+.cell .v.rose{color:var(--rose)}
+.cell .v.gold{color:var(--gold)}
 
-  /* tier card */
-  .tier{
-    background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    padding:16px 16px 15px;margin-bottom:12px;
-  }
-  .tier-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
-  .tier-name{font-size:16px;font-weight:800}
-  .tier-ratio{font-size:13px;color:var(--muted);font-weight:600}
-  .tier-ratio b{color:var(--gain);font-size:18px;font-weight:800}
-  .tier-give{font-size:12.5px;color:var(--muted);margin-bottom:11px}
-  .tier-give b{color:#C2C7DA;font-weight:600}
-  .bar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700}
-  .b-studio{background:var(--studio);color:#C7CCDD;display:flex;align-items:center;justify-content:center}
-  .b-us{background:linear-gradient(90deg,var(--gain-deep),var(--gain));color:#04130E;display:flex;align-items:center;justify-content:center}
+/* ── sections ── */
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+  color:var(--rose);margin-bottom:14px;
+}
+h2{
+  font-family:'Noto Serif KR',serif;font-weight:700;font-size:clamp(22px,3vw,28px);
+  letter-spacing:-0.01em;margin-bottom:14px;
+}
+.sec-desc{color:var(--sub);max-width:660px;margin-bottom:36px;font-weight:300}
+.sec-desc b{color:var(--txt);font-weight:500}
+h3{font-size:16px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
 
-  /* MG block */
-  .mg{
-    background:linear-gradient(150deg,#1A1D2B,#22202E);
-    border:1px solid #3A3320;border-radius:14px;padding:18px;margin-bottom:12px;
-  }
-  .mg-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .mg-row + .mg-row{margin-top:13px;padding-top:13px;border-top:1px solid #2E2A24}
-  .mg-k{font-size:13px;color:var(--muted)}
-  .mg-v{font-size:15px;font-weight:800;text-align:right}
-  .mg-v.amber{color:var(--amber)}
-  .mg-sub{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:2px}
+/* ── two-column cards ── */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:26px 24px}
+.card.rose-b{border-color:rgba(232,135,156,.4)}
+.card.gold-b{border-color:rgba(217,185,138,.4)}
+.card .badge{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  padding:4px 10px;border-radius:2px;margin-bottom:16px;
+}
+.badge.rose{background:var(--rose-dim);color:var(--rose)}
+.badge.gold{background:var(--gold-dim);color:var(--gold)}
+.card ul{list-style:none;margin-top:14px}
+.card li{padding:9px 0;border-top:1px solid var(--line);font-size:14px;color:var(--sub)}
+.card li:first-child{border-top:none}
+.card li b{color:var(--txt);font-weight:500}
+.big-num{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;margin-bottom:2px}
+.big-num.rose{color:var(--rose)} .big-num.gold{color:var(--gold)}
+.small-cap{font-size:12px;color:var(--mut);font-family:'IBM Plex Mono',monospace;letter-spacing:.06em}
 
-  /* note rows */
-  .note{
-    background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin-bottom:12px;
-  }
-  .note .h{font-size:13.5px;font-weight:800;margin-bottom:6px}
-  .note .b{font-size:13px;color:var(--muted);line-height:1.65}
-  .note .b b{color:#C2C7DA;font-weight:600}
+/* ── role split ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split .col{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:24px}
+.split .col h3{display:flex;align-items:center;gap:9px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.r{background:var(--rose)} .dot.g{background:var(--gold)}
+.split li{font-size:14px;color:var(--sub);padding:8px 0 8px 18px;position:relative;list-style:none}
+.split li::before{content:"—";position:absolute;left:0;color:var(--mut)}
+.split li b{color:var(--txt);font-weight:500}
 
-  .key{display:flex;gap:16px;margin-top:6px;font-size:11.5px;color:var(--muted)}
-  .key span{display:inline-flex;align-items:center;gap:6px}
-  .kd{width:10px;height:10px;border-radius:3px;display:inline-block}
-  .kd.s{background:var(--studio)}
-  .kd.u{background:var(--gain)}
+/* ── table ── */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  color:var(--mut);font-weight:500;padding:12px 14px;border-bottom:1px solid var(--line);
+}
+td{padding:13px 14px;border-bottom:1px solid var(--line);color:var(--sub);vertical-align:top}
+td b{color:var(--txt);font-weight:500}
+td.num{font-family:'IBM Plex Mono',monospace;color:var(--txt)}
+tr.hl td{background:rgba(232,135,156,.05)}
+.tbl-wrap{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;overflow-x:auto}
+.tbl-note{font-size:12.5px;color:var(--mut);margin-top:12px}
 
-  footer{margin-top:24px;text-align:center;font-size:11px;color:#5A6075}
+/* ── flow ── */
+.flow{display:flex;align-items:stretch;gap:0;margin:8px 0 20px;flex-wrap:wrap}
+.step{
+  flex:1;min-width:140px;background:var(--panel);border:1px solid var(--line);
+  padding:18px 16px;position:relative;
+}
+.step:not(:last-child){border-right:none}
+.step:first-child{border-radius:6px 0 0 6px}
+.step:last-child{border-radius:0 6px 6px 0}
+.step .n{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mut);letter-spacing:.14em;margin-bottom:8px}
+.step .t{font-size:13.5px;font-weight:500;line-height:1.45}
+.step .d{font-size:12px;color:var(--mut);margin-top:6px;line-height:1.5}
+.step.sfw{border-top:2px solid var(--ok)}
+.step.paid{border-top:2px solid var(--rose)}
+.flow-legend{display:flex;gap:24px;font-size:12.5px;color:var(--sub)}
+.flow-legend .li{display:flex;align-items:center;gap:8px}
+.bar{width:18px;height:3px;border-radius:2px;display:inline-block}
+.bar.ok{background:var(--ok)} .bar.rose{background:var(--rose)}
+
+/* ── clause list ── */
+.clauses{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.clause{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px}
+.clause .c-tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--gold);margin-bottom:10px}
+.clause h4{font-size:14.5px;font-weight:700;margin-bottom:8px}
+.clause p{font-size:13px;color:var(--sub);line-height:1.7}
+.clause p b{color:var(--txt);font-weight:500}
+
+/* ── timeline ── */
+.tl{position:relative;padding-left:28px;margin-top:8px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 26px 14px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-24px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--rose);
+}
+.tl-item .w{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--rose);margin-bottom:4px}
+.tl-item h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.tl-item p{font-size:13.5px;color:var(--sub)}
+
+/* ── callout ── */
+.callout{
+  background:linear-gradient(135deg,rgba(232,135,156,.08),rgba(217,185,138,.05));
+  border:1px solid rgba(232,135,156,.3);border-radius:6px;padding:26px 26px;margin-top:28px;
+}
+.callout .serif{font-size:18px;font-weight:700;line-height:1.6;margin-bottom:8px}
+.callout p{font-size:14px;color:var(--sub)}
+.callout p b{color:var(--txt);font-weight:500}
+
+/* ── footer ── */
+footer{padding:44px 0 64px;color:var(--mut);font-size:12px}
+footer .mono{letter-spacing:.14em}
+.foot-line{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+
+@media (max-width:720px){
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .duo,.split,.clauses{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .step{border-right:1px solid var(--line)!important;border-radius:0!important}
+  .step:first-child{border-radius:6px 6px 0 0!important}
+  .step:last-child{border-radius:0 0 6px 6px!important}
+  .step:not(:last-child){border-bottom:none}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="eyebrow">AI 에셋 협업 · 핵심 요약</div>
-  <h1>웹툰 스튜디오 RS / MG 구조</h1>
-  <div class="tag">원칙 — 당사가 비용·리스크를 더 질수록 당사 RS↑ (50 → 70 → 80%)</div>
-
-  <div class="rule"></div>
-
-  <div class="sec-label">티어별 수익 배분</div>
-
-  <div class="tier">
-    <div class="tier-top">
-      <div class="tier-name">자체제작형</div>
-      <div class="tier-ratio">당사 <b>50</b>%</div>
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="wrap">
+    <div class="tag-row">
+      <span class="tag">PARTNERSHIP PROPOSAL</span>
+      <span class="tag">2026.07</span>
+      <span class="tag hot">CONFIDENTIAL</span>
     </div>
-    <div class="tier-give">제공: <b>NPM + 유통</b> · 스튜디오가 전 비용 부담</div>
-    <div class="bar"><div class="b-studio" style="width:50%">50%</div><div class="b-us" style="width:50%">당사 50%</div></div>
-  </div>
+    <h1 class="serif">소속 크리에이터의 <em>AI 분신</em>이<br>새로운 매출원이 됩니다</h1>
+    <p class="lede">
+      챗플(Chatple)은 크리에이터를 닮은 AI 캐릭터를 제작·운영하는 인터랙티브 콘텐츠 플랫폼입니다.
+      크리에이터는 <b>사진 몇 장과 성격·말투 감수</b>만 제공하면 되고, 제작·운영·정산은 전부 챗플이 수행합니다.
+      팬은 크리에이터가 방송하지 않는 시간에도 캐릭터와 대화하며, 발생 매출은 <b>크리에이터·에이전시에 자동 정산</b>됩니다.
+    </p>
 
-  <div class="tier">
-    <div class="tier-top">
-      <div class="tier-name">하이브리드형</div>
-      <div class="tier-ratio">당사 <b>70</b>%</div>
-    </div>
-    <div class="tier-give">제공: <b>+ 영상 API (월 ~100만원)</b></div>
-    <div class="bar"><div class="b-studio" style="width:30%">30%</div><div class="b-us" style="width:70%">당사 70%</div></div>
-  </div>
-
-  <div class="tier">
-    <div class="tier-top">
-      <div class="tier-name">풀지원형</div>
-      <div class="tier-ratio">당사 <b>80</b>%</div>
-    </div>
-    <div class="tier-give">제공: <b>+ MG · 인프라 · 프롬프트 가이드</b> · 스튜디오는 노동력만</div>
-    <div class="bar"><div class="b-studio" style="width:20%">20%</div><div class="b-us" style="width:80%">당사 80%</div></div>
-  </div>
-
-  <div class="key">
-    <span><i class="kd s"></i> 스튜디오</span>
-    <span><i class="kd u"></i> 당사</span>
-  </div>
-
-  <div class="rule"></div>
-
-  <div class="sec-label">MG (풀지원형 한정)</div>
-  <div class="mg">
-    <div class="mg-row">
-      <div class="mg-k">보장 수준</div>
-      <div class="mg-v amber">1인 월 250만원</div>
-    </div>
-    <div class="mg-row">
-      <div class="mg-k">회수 방식</div>
-      <div>
-        <div class="mg-v">스튜디오 몫(20%)에서 선차감</div>
-        <div class="mg-sub">recoupable · 미달 차액만 당사 흡수</div>
+    <div class="strip">
+      <div class="cell">
+        <div class="k">선급 MG (표준)</div>
+        <div class="v rose">300–500<span>만원</span></div>
       </div>
-    </div>
-    <div class="mg-row">
-      <div class="mg-k">회수 손익분기</div>
-      <div>
-        <div class="mg-v">월 순매출 1,250만원<span style="color:var(--muted);font-weight:600"> (1인)</span></div>
-        <div class="mg-sub">2인 투입 시 2,500만원</div>
+      <div class="cell">
+        <div class="k">매출 RS (크리에이터측)</div>
+        <div class="v rose">50<span>%</span></div>
+      </div>
+      <div class="cell">
+        <div class="k">크리에이터 소요 시간</div>
+        <div class="v gold">~4<span>시간 / 론칭까지</span></div>
+      </div>
+      <div class="cell">
+        <div class="k">제작·운영 비용 부담</div>
+        <div class="v gold">0<span>원 (챗플 전액)</span></div>
       </div>
     </div>
   </div>
-
-  <div class="rule"></div>
-
-  <div class="sec-label">정산 기준 · 포지셔닝</div>
-
-  <div class="note">
-    <div class="h">RS 정산 = 순매출(net) 기준</div>
-    <div class="b">총매출 − <b>결제수수료 등 직접비만</b> 공제. 일반관리·마케팅·인건비는 비공제. 지원(API·인프라)은 <b>RS 비율에만 반영</b>, 별도 정산 없음.</div>
-  </div>
-
-  <div class="note">
-    <div class="h">풀지원형은 마진보다 물량·신규 확보용 앵커</div>
-    <div class="b">MG·API·인프라를 얹고 80%를 가져가되, MG가 낮아 회수가 빠름. 업사이드를 원하는 스튜디오는 자연히 하이브리드(70%)로 유도.</div>
-  </div>
-
-  <div class="note">
-    <div class="h">미결정 1건</div>
-    <div class="b">MG 회수 기간 — 현재 <b>정산 12개월</b> 가정. 무기한 누적 vs 기간 한정만 확정하면 완성.</div>
-  </div>
-
-  <footer>웹툰 스튜디오 AI 에셋 협업 · 대표 보고용 요약</footer>
-
 </div>
+
+<!-- ═══════════ 1. 사업 모델 ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">01 · BUSINESS MODEL</div>
+    <h2 class="serif">단순 광고 협찬이 아닌, 크리에이터 자신의 상품</h2>
+    <p class="sec-desc">
+      기존 협찬·광고는 남의 상품을 대신 알리는 일회성 딜입니다. 이 모델에서 크리에이터는
+      <b>자기 자신을 IP로 한 상품의 소유자</b>가 되며, 홍보 활동이 곧 자기 브랜드 확장이 됩니다.
+      팬덤이 유지되는 한 매출이 지속되는 <b>스톡형(stock) 수익 구조</b>입니다.
+    </p>
+
+    <div class="duo">
+      <div class="card">
+        <div class="badge gold">기존 광고 협찬 모델</div>
+        <ul>
+          <li><b>남의 상품</b>을 대신 판매</li>
+          <li>동기: 건당 수수료 → 캠페인 종료 시 수익 종료</li>
+          <li>콘텐츠 차별화 불가 — 누구나 같은 광고</li>
+          <li>팬덤과 수익의 연결 고리 없음</li>
+        </ul>
+      </div>
+      <div class="card rose-b">
+        <div class="badge rose">C+P 융합 모델 (본 제안)</div>
+        <ul>
+          <li><b>자기 IP 상품</b>을 직접 보유·판매</li>
+          <li>동기: 브랜드 확장 → 활동할수록 자산 축적</li>
+          <li>본인 아이덴티티 자체가 콘텐츠 차별화</li>
+          <li>팬 1명 = 반복 결제 가능한 지속 고객</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="serif">"내가 없을 때, 이 아이와 놀아줘."</div>
+      <p>팬 입장에서는 <b>최애와의 접점이 24시간으로 확장</b>되는 경험이고, 크리에이터 입장에서는
+      방송·업로드가 없는 시간에도 팬덤이 수익으로 전환되는 구조입니다. 별도 광고비 집행 없이
+      크리에이터 본인 채널이 유입 경로가 되므로 마케팅 비용이 0에 수렴합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. 역할 분담 ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">02 · WHO DOES WHAT</div>
+    <h2 class="serif">크리에이터 부담 제로 설계</h2>
+    <p class="sec-desc">
+      제작 리소스는 전부 챗플의 전담 프로덕션 팀(PD 1 + 애셋 크리에이터 3 체제)이 수행합니다.
+      크리에이터·에이전시가 실제로 투입하는 것은 <b>레퍼런스 사진 제공과 감수 승인</b>뿐입니다.
+    </p>
+
+    <div class="split">
+      <div class="col">
+        <h3><span class="dot g"></span>크리에이터 / 에이전시</h3>
+        <ul>
+          <li>레퍼런스 <b>사진 수 장 제공</b> (기존 화보·프로필 활용 가능)</li>
+          <li>캐릭터 <b>성격·말투·시나리오 감수</b> 및 승인 (약 2–3시간)</li>
+          <li>본인 채널에 <b>자연스러운 소개 콘텐츠</b> 업로드 — "내 AI 캐릭터를 만들었다" 리뷰형</li>
+          <li>에이전시: 계약 창구, 정산 수령 계좌 관리</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="dot r"></span>챗플 (전액 부담)</h3>
+        <ul>
+          <li>고품질 캐릭터 <b>애셋 전량 제작</b> — 일러스트·이미지 세트</li>
+          <li>대화 AI <b>성격·시나리오 설계 및 QA</b> (100턴 표준 검수)</li>
+          <li>플랫폼 <b>운영·결제·CS·서버</b> 일체</li>
+          <li>전용 <b>SFW 캐릭터 소개 랜딩 페이지</b> 제작</li>
+          <li>매월 <b>자동 정산 리포트</b> 제공 (대시보드)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 3. 계약 구조 ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">03 · DEAL STRUCTURE</div>
+    <h2 class="serif">계약 구조 — 두 가지 트랙</h2>
+    <p class="sec-desc">
+      팔로워 규모 및 협업 범위에 따라 <b>표준 트랙</b>과 <b>플래그십 트랙</b> 중 선택합니다.
+      MG는 향후 RS에서 차감(recoupable)되는 선급금으로, 크리에이터의 초기 리스크를 챗플이 흡수하는 장치입니다.
+    </p>
+
+    <div class="duo">
+      <div class="card">
+        <div class="badge gold">TRACK A · 표준</div>
+        <div class="big-num gold">300–500만원</div>
+        <div class="small-cap">MG · FULLY RECOUPABLE</div>
+        <ul>
+          <li>선급 MG 전액 <b>RS 차감형</b> — 캐릭터 매출 RS에서 순차 회수</li>
+          <li>매출 RS: 캐릭터 매출의 <b>50%</b> — 자체 IP 제공형 표준 요율</li>
+          <li>어필리에이트 수수료 <b>별도 지급</b> — 본인 채널 유입분 자동 트래킹</li>
+          <li>계약 기간 12개월 · 상호 협의 갱신</li>
+        </ul>
+      </div>
+      <div class="card rose-b">
+        <div class="badge rose">TRACK B · 플래그십 (선착 1팀 한정)</div>
+        <div class="big-num rose">500만원</div>
+        <div class="small-cap">SIGNING FEE 200만원 비차감 포함</div>
+        <ul>
+          <li>사이닝 피 <b>200만원 비차감</b> + 잔여 <b>300만원 RS 차감형 MG</b>로 구성</li>
+          <li>초기 3개월 RS <b>우대율 적용</b> (50% → 60%)</li>
+          <li>애셋 제작 <b>최우선 배정</b> — 전담 PD 팀 즉시 투입</li>
+          <li>반대급부: <b>성과 공개 협조 조항</b> — 매출 실적을 마케팅 레퍼런스로 활용하는 데 동의 (공개 범위·표현은 사전 상호 승인)</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="tbl-note">
+      ※ 에이전시 수수료는 크리에이터측 RS 총액 내에서 에이전시–크리에이터 간 내부 배분을 원칙으로 하되,
+      에이전시 앞 별도 오버라이드 구조(예: 크리에이터측 RS 외 +α%)도 협의 가능합니다.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ 4. 수익 구조 ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">04 · REVENUE</div>
+    <h2 class="serif">수익원과 정산 구조</h2>
+    <p class="sec-desc">
+      캐릭터에서 발생하는 모든 과금 항목이 RS 산정 대상이며, 여기에 본인 채널 유입 기여분에 대한
+      어필리에이트 수수료가 <b>별도로 가산</b>됩니다. 이중 수익 구조입니다.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>수익원</th><th>단가</th><th>발생 구조</th><th>크리에이터측 귀속</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>일상 대화 과금</b></td><td class="num">80원 / 건</td><td>유입 후 자연 발생하는 기본 대화</td><td>RS 산정 포함</td></tr>
+          <tr><td><b>심화 대화 과금</b></td><td class="num">100원 / 건</td><td>유저가 플랫폼 내에서 직접 선택 시</td><td>RS 산정 포함</td></tr>
+          <tr><td><b>프리미엄 이미지</b></td><td class="num">100원</td><td>캐릭터 전용 애셋 열람</td><td>RS 산정 포함</td></tr>
+          <tr><td><b>익스클루시브</b></td><td class="num">200원</td><td>한정 콘텐츠</td><td>RS 산정 포함</td></tr>
+          <tr><td><b>로얄 (영구 소장)</b></td><td class="num">300원</td><td>최상위 티어</td><td>RS 산정 포함</td></tr>
+          <tr class="hl"><td><b>어필리에이트 수수료</b></td><td class="num">별도 요율</td><td>본인 채널 경유 유입분 자동 트래킹</td><td><b>RS 외 별도 가산</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:40px">예상 수익 시뮬레이션 <span class="small-cap" style="font-weight:400">— 팔로워 10만+ 크리에이터 기준</span></h3>
+    <div class="tbl-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr><th>시나리오</th><th>플랫폼 유입</th><th>유료 전환 유저</th><th>캐릭터 월 매출</th><th>크리에이터측 월 수익 (RS 50% 기준)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>보수</b></td><td class="num">1,500명 (1%)</td><td class="num">~150명</td><td class="num">~200만원</td><td class="num">~100만원 + 어필리에이트</td></tr>
+          <tr><td><b>기본</b></td><td class="num">2,500명 (1.7%)</td><td class="num">~250명</td><td class="num">~500만원</td><td class="num">~250만원 + 어필리에이트</td></tr>
+          <tr class="hl"><td><b>성공</b></td><td class="num">3,000명+ (2%+)</td><td class="num">~300명+</td><td class="num">~900만원+</td><td class="num"><b>~450만원+ + 어필리에이트</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note">
+      ※ 유료 전환율 5–10%, ARPPU 월 1–3만원 가정. 기본 시나리오 기준 MG 300–500만원은 <b>1–2개월 내 회수</b>되는 구조로,
+      이후 RS 전액이 실지급 전환됩니다. 정산은 <b>월 단위 자동 집계 · 익월 정산</b>, 대시보드로 실시간 조회 가능합니다.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ 5. 채널 보호 설계 ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">05 · CHANNEL SAFETY</div>
+    <h2 class="serif">크리에이터 채널 보호 설계</h2>
+    <p class="sec-desc">
+      에이전시가 가장 먼저 확인할 부분입니다. 챗플은 성인 등급 콘텐츠를 포함하는 플랫폼이지만,
+      <b>크리에이터의 SNS 활동 표면에는 성인 요소가 일절 노출되지 않는 구조</b>로 설계되어 있습니다.
+      크리에이터가 공유하는 것은 "AI 캐릭터 체험"이라는 기술 콘텐츠이며, 콘텐츠 등급 전환은
+      플랫폼 내부에서 성인 인증을 마친 유저가 직접 선택합니다.
+    </p>
+
+    <div class="flow">
+      <div class="step sfw">
+        <div class="n">STEP 1</div>
+        <div class="t">크리에이터 SNS</div>
+        <div class="d">AI 캐릭터 리뷰형 콘텐츠 — 대화 스크린샷, 소개 영상</div>
+      </div>
+      <div class="step sfw">
+        <div class="n">STEP 2</div>
+        <div class="t">SFW 랜딩 페이지</div>
+        <div class="d">캐릭터 일러스트 · 성격 소개 · 완전 건전</div>
+      </div>
+      <div class="step sfw">
+        <div class="n">STEP 3</div>
+        <div class="t">무료 일상 대화</div>
+        <div class="d">성인 요소 없는 체험 구간</div>
+      </div>
+      <div class="step paid">
+        <div class="n">STEP 4</div>
+        <div class="t">등급 전환 (유저 선택)</div>
+        <div class="d">플랫폼 내부 · 성인 인증 유저 본인 선택</div>
+      </div>
+      <div class="step paid">
+        <div class="n">STEP 5</div>
+        <div class="t">과금</div>
+        <div class="d">대화 · 이미지 티어 결제</div>
+      </div>
+    </div>
+    <div class="flow-legend">
+      <span class="li"><span class="bar ok"></span>SNS·외부 노출 구간 — 성인 요소 없음, 플랫폼 정책 위반 소지 없음</span>
+      <span class="li"><span class="bar rose"></span>플랫폼 내부 — 외부 링크와 분리</span>
+    </div>
+
+    <div class="clauses" style="margin-top:36px">
+      <div class="clause">
+        <div class="c-tag">TACTIC 01</div>
+        <h4>SFW 랜딩 분리</h4>
+        <p>크리에이터의 링크는 항상 <b>완전 건전한 캐릭터 소개 페이지</b>로만 연결됩니다. 챗플이 크리에이터별 전용 랜딩을 제작·관리합니다.</p>
+      </div>
+      <div class="clause">
+        <div class="c-tag">TACTIC 02</div>
+        <h4>콘텐츠 자체가 건전 바이럴</h4>
+        <p>공유 콘텐츠는 "내 AI가 이런 말을 했다" 류의 <b>재미 위주 AI 리뷰</b>입니다. Character.ai 유저들이 이미 일상적으로 하는 행동과 동일한 포맷입니다.</p>
+      </div>
+      <div class="clause">
+        <div class="c-tag">TACTIC 03</div>
+        <h4>링크트리 경유</h4>
+        <p>SNS 프로필에는 플랫폼 직접 링크 대신 <b>본인 링크트리·개인 사이트를 경유</b>합니다. 플랫폼 정책상 개인 웹사이트 링크를 제재할 근거가 없습니다.</p>
+      </div>
+      <div class="clause">
+        <div class="c-tag">TACTIC 04</div>
+        <h4>계정 이중화 (선택)</h4>
+        <p>메인 계정은 일상·뷰티 콘텐츠에 "AI 캐릭터 만들었다" 언급 수준으로 유지하고, 캐릭터 심화 콘텐츠는 <b>서브 계정으로 분리</b>해 메인 계정 리스크를 원천 차단할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="serif">다음 단계</div>
+      <p>협업 가능한 소속 크리에이터 후보 리스트를 공유해 주시면, <b>크리에이터별 예상 수익 시뮬레이션과
+      맞춤 계약 조건안</b>을 1주 내 회신드리겠습니다. 세부 권리 조항(초상·퍼블리시티권 이용 범위, 콘텐츠 등급 동의, 계약 종료 시 캐릭터 처리)과 실행 일정은 개별 협의로 확정합니다.</p>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-line">
+      <span class="mono">CHATPLE · C+P CREATOR PARTNERSHIP</span>
+      <span class="mono">STRICTLY CONFIDENTIAL · 2026.07</span>
+    </div>
+    <p style="margin-top:14px;line-height:1.7">
+      본 제안서의 금액·요율은 협의 기준안이며 최종 조건은 개별 계약서에 따릅니다.
+      본 문서는 수신 에이전시 내부 검토 목적으로만 사용할 수 있습니다.
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>
